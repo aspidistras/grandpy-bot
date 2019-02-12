@@ -1,20 +1,20 @@
 """"tests parsing a sentence"""
 
-from ..logic import parser as script
+from app.logic.parser import Parser
 
 
 class TestParser:
 
     def setup_method(self):
-        self.sentence = "Est-ce que tu connais l'adresse d'OpenClassrooms ?"
-        self.words = ["Est", "ce", "que", "tu", "connais", "l'", "adresse",
-                      "d'", "OpenClassrooms", "?"]
-        self.keywords = ["adresse", "OpenClassrooms" ]
+        sentence = "Est-ce que tu connais l'adresse d'OpenClassrooms ?"
+        self.parser = Parser(sentence)
         
     def test_sentence_to_words(self):
-        assert script.sentence.sentence_to_words(self.sentence) == self.words
+        assert self.parser.sentence_to_words() == ["Est", "ce", "que", "tu",
+                                                   "connais", "l'", "adresse",
+                                                   "d'", "OpenClassrooms", "?"]
 
     def test_keywords(self):
-        assert script.words_to_keywords(self.words) == self.keywords
+        assert self.parser.keywords == ["OpenClassrooms"]
 
 
