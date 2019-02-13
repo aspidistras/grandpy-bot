@@ -1,0 +1,33 @@
+#page {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Bahnschrift, sans-serif;
+}
+
+#dialog-box {
+    border: black groove;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+    min-height: 100vh;
+    background-color: aliceblue;
+}
+
+#zone {
+    background-image: url("../pictures/background.jpg");
+    background-position: center;
+}
+
+header, footer {
+    background-color: gray;
+    margin: 0;
+    text-align: center;
+    color: aliceblue;
+}
+
+#dialog-box {
+    text-align: center;
+    padding: 10px;
+}

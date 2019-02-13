@@ -1,3 +1,5 @@
+"""parses the sentence typed by the user to get the keywords"""
+
 import re
 
 

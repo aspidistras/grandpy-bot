@@ -1,6 +1,9 @@
 """tests Google Maps's API response with mock"""
 
 
+from app.logic.api_google_maps import GoogleMapsObject
+
+
 class TestGoogleMapsApi:
 
     def setup_method(self):

@@ -1,6 +1,9 @@
 """tests Media Wiki's API response with mock"""
 
 
+from app.logic.api_media_wiki import MediaWikiObject
+
+
 class TestMediaWikiAPI:
 
     def setup_method(self):
