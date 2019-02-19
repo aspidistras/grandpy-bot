@@ -8,3 +8,7 @@ https://openclassrooms.com/
 https://stackoverflow.com/
 https://www.w3schools.com/
 http://sametmax.com/
+
+IMAGES
+
+https://burst.shopify.com/photos/white-brick-interior-wall-texture?q=background

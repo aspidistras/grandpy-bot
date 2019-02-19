@@ -1,0 +1,5 @@
+Flask==0.12.1
+gunicorn==19.9.0
+pipenv==2018.11.26
+pytest==4.2.0
+requests==2.20.1

@@ -11,8 +11,8 @@ class TestParser:
         
     def test_sentence_to_words(self):
         assert self.parser.sentence_to_words() == ["Est", "ce", "que", "tu",
-                                                   "connais", "l'", "adresse",
-                                                   "d'", "OpenClassrooms", "?"]
+                                                   "connais", "l", "adresse",
+                                                   "d", "OpenClassrooms", "?"]
 
     def test_keywords(self):
         assert self.parser.keywords == ["OpenClassrooms"]
