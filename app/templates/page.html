@@ -3,14 +3,21 @@
 <html lang="fr">
 
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../static/css/style.css">
 	<title>GrandPy Bot</title>
+
+	<script src="../static/js/google_maps.js"></script>
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUnRzCRahCsaUx5RhTeWALaFmSj5gh8Xg&callback=initMap" type="text/javascript"></script>
+
 </head>
 
 <body id="page">
+
 	<header>
 		<h1>GrandPy Bot</h1>
 	</header>
@@ -23,10 +30,11 @@
 					   placeholder="Exemple : Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
 				       size="80">
 			</form>
+			<div id="map"></div>
 		</div>
-		<div id="map">
 
-		</div>
+
+
 	</div>
 
 
@@ -38,9 +46,6 @@
 
 		</div>
 	</footer>
-
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=#d#JCqTTW\nilK\\7m\x0bp#\tj~#H&callback=initMap"></script>
-	<script src="../static/js/google_maps.js"></script>
 
 </body>
 

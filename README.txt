@@ -8,6 +8,7 @@ https://openclassrooms.com/
 https://stackoverflow.com/
 https://www.w3schools.com/
 http://sametmax.com/
+https://nouvelle-techno.fr/actualites/2017/12/06/pas-a-pas-inserer-une-carte-google-maps-avec-lapi-google-maps-javascript
 
 IMAGES
 

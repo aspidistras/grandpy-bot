@@ -31,3 +31,8 @@ header, footer {
     text-align: center;
     padding: 10px;
 }
+
+#map {
+    width: 200px;
+    height: 200px;
+}
