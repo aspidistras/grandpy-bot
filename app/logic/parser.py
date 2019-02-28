@@ -1,6 +1,7 @@
 """parses the sentence typed by the user to get the keywords"""
 
 import re
+import json
 
 
 class Parser:
@@ -12,10 +13,26 @@ class Parser:
         self.keywords = []
 
     def sentence_to_words(self):
-        delimiters = " ", ",", "-", ":"
+        delimiters = " ", ",", "-", ":", "'"
         regex_pattern = '|'.join(map(re.escape, delimiters))
         self.words = re.split(regex_pattern, self.sentence)
-        return self.words
 
-    def words_to_keywords(self, words):
-        pass
+        for word in self.words:
+            if word == "":
+                self.words.remove(word)
+
+    def words_to_keywords(self):
+        with open("stop_words.json", encoding="utf-8") as stop_words_file:
+            stop_words = json.loads(stop_words_file.read())
+
+        print(self.words)
+
+        for word in self.words:
+            if word not in stop_words:
+                self.keywords.append(word)
+
+
+a = Parser("Ou est OpenClassrooms")
+a.sentence_to_words()
+a.words_to_keywords()
+
