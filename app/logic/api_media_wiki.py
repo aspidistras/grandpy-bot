@@ -29,6 +29,7 @@ class MediaWikiObject:
         pages = query["pages"]
         self.content = pages[0]["extract"]
         print(self.content)
+        return self.content
 
 
 a = MediaWikiObject("Cité Paradis")
