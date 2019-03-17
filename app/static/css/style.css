@@ -1,38 +1,53 @@
-#page {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+.container-fluid {
     font-family: Bahnschrift, sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
-#dialog-box {
+#dialogue-zone {
     border: black groove;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 60%;
     min-height: 100vh;
     background-color: aliceblue;
 }
 
-#zone {
+#body {
     background-image: url("../pictures/background.jpg");
     background-position: center;
 }
 
 header, footer {
     background-color: gray;
-    margin: 0;
-    text-align: center;
     color: aliceblue;
-}
-
-#dialog-box {
+    padding: 5px;
     text-align: center;
-    padding: 10px;
 }
 
 #map {
-    width: 200px;
-    height: 200px;
+    height: 300px;
+    border-bottom: black groove;
+}
+
+#robot {
+    width: 60px;
+    height: 60px;
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
+}
+
+#question {
+    width: 100%;
+}
+
+#chat-box {
+    margin-top: 10px;
 }

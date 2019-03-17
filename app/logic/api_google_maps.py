@@ -23,12 +23,11 @@ class GoogleMapsObject:
         else:
             return None
 
-    def search_address(self)
+    def search_address(self):
         data = self.result["results"]
         self.address = data[0]["formatted_address"]
         print(self.address)
         return self.address
-
 
 
 a = GoogleMapsObject("a")

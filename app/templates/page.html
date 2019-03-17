@@ -8,44 +8,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <title>GrandPy Bot</title>
 
     <script src="../static/js/google_maps.js"></script>
-
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUnRzCRahCsaUx5RhTeWALaFmSj5gh8Xg&callback=initMap" type="text/javascript"></script>
 
 </head>
 
-<body id="page">
+<body>
 
-<header>
-    <h1>GrandPy Bot</h1>
-</header>
+    <div class="container-fluid">
 
-<div id="zone">
-    <div id="dialog-box">
-        <form>
-            <label for="question">Pose ta question :</label>
-            <input type="text" name="question" id="question"
-                   placeholder="Exemple : Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"
-                   size="80">
-        </form>
-        <div id="map"></div>
+        <header class="row">
+            <div class="col-xs-12">
+                <h1>GrandPy Bot</h1>
+                <img src="../static/pictures/robot.jpg" alt="Logo de robot" id="robot"/>
+            </div>
+
+        </header>
+
+        <div id="body" class="row">
+            <div id="dialogue-zone" class="center-block">
+                <div class="row">
+                    <div class="col-lg-12" id="map"></div>
+                </div>
+                <div id="chat-box" class="row center-block">
+                    <form>
+                        <label for="question">Pose ta question : </label>
+                        <input type="text" name="question" id="question"
+                           placeholder="Exemple : Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?">
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <footer class="row">
+                <p>Clémence Mourot</p>
+                <a href="https://github.com/ClemMourot/GrandPyBot">
+                    <img src="../static/pictures/github_logo.png"  alt="Repository GitHub" class="logo"/>
+                </a>
+                <a href="https://www.linkedin.com/in/clémence-mourot-839490144/">
+                    <img src="../static/pictures/linkedin_logo.png" alt="Profil LinkedIn" class="logo"/>
+                </a>
+        </footer>
+
     </div>
-
-
-
-</div>
-
-
-<footer>
-    <div>
-        <a>Clémence Mourot</a>
-        <a href="https://github.com/ClemMourot/GrandPyBot">Repository GitHub</a>
-        <a href="https://www.linkedin.com/in/clémence-mourot-839490144/">LinkedIn</a>
-
-    </div>
-</footer>
 
 </body>
 
