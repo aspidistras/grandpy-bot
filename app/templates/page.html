@@ -11,7 +11,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <title>GrandPy Bot</title>
 
+    <script src="../static/js/dialogue.js"></script>
     <script src="../static/js/google_maps.js"></script>
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUnRzCRahCsaUx5RhTeWALaFmSj5gh8Xg&callback=initMap" type="text/javascript"></script>
 
 </head>
@@ -28,25 +30,30 @@
 
         </header>
 
-        <div id="body" class="row">
+        <main id="body" class="row">
             <div id="dialogue-zone" class="center-block">
+                <div id="chat-box" class="row center-block">
+                    <div id="entry-zone">
+                        <form onsubmit="generateResponse();return false;">
+                            <label for="question">Pose ta question : </label>
+                            <input type="text" name="question" id="question"
+                               placeholder="Exemple : Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?">
+                        </form>
+                    </div>
+                    <div id="answers" class="row">
+                        <div class="bubble">
+                           <div class="bubble-text">
+                               <h4>Hello, je suis GrandPy Bot, donne moi un lieu, je te dirai ce qu'il y a à savoir dessus !</h4>
+                           </div>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="row">
                     <div class="col-lg-12" id="map"></div>
                 </div>
-                <div id="chat-box" class="row center-block">
-                    <form>
-                        <label for="question">Pose ta question : </label>
-                        <input type="text" name="question" id="question"
-                           placeholder="Exemple : Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?">
-                    </form>
-
-                </div>
-
-
             </div>
-
-
-        </div>
+        </main>
 
 
         <footer class="row">
