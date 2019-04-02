@@ -14,9 +14,12 @@
     padding-left: 15px;
     padding-right: 15px;
     width: 60%;
-    min-height: 100vh;
+    min-height: 100%;
+    height: 100%;
     background-color: aliceblue;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #body {
@@ -32,7 +35,7 @@ header, footer {
 }
 
 #map {
-    height: 50%;
+    height: 300px;
     width: 100%;
     border-top: black groove;
     position: fixed;
@@ -52,25 +55,59 @@ header, footer {
 
 #question {
     width: 100%;
+    min-height: 20px;
 }
 
 #chat-box {
     margin-top: 10px;
+    height: 600px;
+    width: 100%;
 }
 
+
 .bubble-text {
+    padding: 7px 15px;
+    border-radius: 3px;
+    width: 90%;
+    position: relative;
+}
+
+.bubble-text-answer {
     background: gray;
     color: aliceblue;
-    padding:7px 15px;
-    border-radius:3px;
-    width: 90%;
-    margin: 15px;
+    float: left;
+    position: relative;
+}
+
+.bubble-text-input {
+    background: silver;
+    color: gray;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    float: right;
+    position: relative;
 }
 
 .bubble-text::after{
-content:"";
-border-left:20px solid transparent;
-border-right:20px solid transparent;
-border-top: 20px solid gray;
-position: absolute;
+    content: "";
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    position: absolute;
+}
+
+.bubble-text-input::after {
+    border-top: 20px solid silver;
+    right: 15px;
+}
+
+.bubble-text-answer::after {
+    border-top: 20px solid gray;
+}
+
+#answers {
+    padding: 15px;
+    min-height: 220px;
+    max-height: 220px;
+    overflow: auto;
+    margin-right: 1px;
 }
