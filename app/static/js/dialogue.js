@@ -17,7 +17,7 @@ function displayInput(){
     return bubble;
 };
 
-function displayAnswer(){
+function displayAnswer(response){
 
     var bubble = document.createElement("div");
     bubble.classList.add("bubble");
@@ -33,6 +33,8 @@ function displayAnswer(){
     bubble.appendChild(bubbleText);
 
     return bubble;
+
+
 };
 
 function display() {
@@ -41,12 +43,23 @@ function display() {
     if (input){
         input.addEventListener("keyup",function(e){
             if (e.keyCode === 13) {
+
                 var answers = document.getElementById("answers");
+
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble);
+
                 input.value = "";
-                var answerBubble = displayAnswer();
+
+                var url = "https://grandpy-bot-oc.herokuapp.com";
+
+                var response = ajax(url);
+
+                var answerBubble = displayAnswer(response);
                 answers.appendChild(answerBubble);
+
+                answers.scrollTop = answers.scrollHeight;
+
                 setLocation(35.689487, 139.691706);
             }
         });
@@ -54,9 +67,4 @@ function display() {
 };
 
 
-window.onload = function() { display();  };
-
-
-
-
-
+window.onload = display;

@@ -111,3 +111,10 @@ header, footer {
     overflow: auto;
     margin-right: 1px;
 }
+
+@media (max-width: 800px) {
+
+    #dialogue-zone{
+        width: 90%;
+    }
+}

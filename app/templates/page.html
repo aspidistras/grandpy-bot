@@ -11,10 +11,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <title>GrandPy Bot</title>
     <script src="../static/js/google_maps.js"></script>
+    <script src="../static/js/ajax_response.js"></script>
     <script src="../static/js/dialogue.js"></script>
 
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUnRzCRahCsaUx5RhTeWALaFmSj5gh8Xg&callback=initMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_KEY }}&callback=initMap" type="text/javascript"></script>
 
 </head>
 
@@ -34,7 +35,7 @@
             <div id="dialogue-zone" class="center-block">
                 <div id="chat-box" class="row center-block">
                     <div id="entry-zone">
-                        <form>
+                        <form method="POST">
                             <label for="question">Pose ta question : </label>
                             <textarea name="question" id="question" placeholder="Exemple : Salut GrandPy ! Est-ce que tu connais l'adresse d'OpenClassrooms ?"></textarea>
                         </form>
