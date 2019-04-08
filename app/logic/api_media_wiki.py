@@ -13,9 +13,10 @@ class MediaWikiObject:
         self.url = URL_WIKI.format(location)
         self.request = requests.get(self.url)
         self.result = json.loads(self.request.text)
-        self.content = ""
+        self.content = None
 
     def search_is_ok(self):
+        print(self.url)
         query = self.result["query"]
         pages = query["pages"]
         if "missing" in pages[0]:
@@ -30,11 +31,3 @@ class MediaWikiObject:
         self.content = pages[0]["extract"]
         print(self.content)
         return self.content
-
-
-a = MediaWikiObject("Cité Paradis")
-if a.search_is_ok() is not None:
-    print("a")
-
-a.search_info()
-

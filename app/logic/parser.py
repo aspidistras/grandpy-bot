@@ -22,17 +22,13 @@ class Parser:
                 self.words.remove(word)
 
     def words_to_keywords(self):
-        with open("stop_words.json", encoding="utf-8") as stop_words_file:
+        with open("logic/stop_words.json", encoding="utf-8") as stop_words_file:
+            print("a")
             stop_words = json.loads(stop_words_file.read())
-
-        print(self.words)
 
         for word in self.words:
             if word not in stop_words:
                 self.keywords.append(word)
 
-
-a = Parser("Ou est OpenClassrooms")
-a.sentence_to_words()
-a.words_to_keywords()
-
+        print(self.keywords)
+        return self.keywords

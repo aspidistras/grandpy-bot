@@ -4,20 +4,21 @@
 import json
 import requests
 
-from constants import URL_MAPS
+from constants import URL_MAPS, GOOGLE_MAPS_KEY
 
 
 class GoogleMapsObject:
 
     def __init__(self, keyword):
         self.keyword = keyword
-        self.url = URL_MAPS.format(self.keyword)
+        self.url = URL_MAPS.format(self.keyword, GOOGLE_MAPS_KEY)
         self.request = requests.get(self.url)
         self.result = json.loads(self.request.text)
         self.status = self.result["status"]
         self.address = ""
 
     def search_is_ok(self):
+        print(self.url)
         if self.status == "OK":
             return 1
         else:
@@ -28,10 +29,3 @@ class GoogleMapsObject:
         self.address = data[0]["formatted_address"]
         print(self.address)
         return self.address
-
-
-a = GoogleMapsObject("a")
-if a.search_is_ok() is not None:
-    print("a")
-
-a.search_address()

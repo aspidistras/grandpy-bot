@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 
-from app.grandpy_bot import GrandpyBot
+from app.grandpy_bot import GrandPyBot
 
 
 app = Flask(__name__)
@@ -15,8 +15,8 @@ def page():
 
 @app.route('/', methods=['POST'])
 def generate_answer():
-    bot = GrandpyBot()
-    return jsonify({'answer': bot.answer(request.form['question'])})
+    bot = GrandPyBot()
+    return jsonify({'answer': bot.data(request.form['question'])})
 
 
 if __name__ == "__main__":
