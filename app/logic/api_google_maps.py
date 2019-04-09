@@ -15,10 +15,9 @@ class GoogleMapsObject:
         self.request = requests.get(self.url)
         self.result = json.loads(self.request.text)
         self.status = self.result["status"]
-        self.address = ""
+        self.data = dict()
 
     def search_is_ok(self):
-        print(self.url)
         if self.status == "OK":
             return 1
         else:
@@ -26,6 +25,7 @@ class GoogleMapsObject:
 
     def search_address(self):
         data = self.result["results"]
-        self.address = data[0]["formatted_address"]
-        print(self.address)
-        return self.address
+        self.data["address"] = data[0]["formatted_address"]
+        self.data["longitude"] = data[0]["geometry"]["location"]["lng"]
+        self.data["latitude"] = data[0]["geometry"]["location"]["lat"]
+        return self.data

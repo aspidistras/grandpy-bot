@@ -22,7 +22,7 @@ class Parser:
                 self.words.remove(word)
 
     def words_to_keywords(self):
-        with open("logic/stop_words.json", encoding="utf-8") as stop_words_file:
+        with open("C:/Users/clemm/Desktop/GrandPyBot/app/logic/stop_words.json", encoding="utf-8") as stop_words_file:
             print("a")
             stop_words = json.loads(stop_words_file.read())
 

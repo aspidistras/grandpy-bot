@@ -37,7 +37,22 @@ function displayAnswer(response){
 
 };
 
-function display() {
+function readData(data) {
+    alert("a");
+    stringData = JSON.parse(data);
+
+    var answers = document.getElementById("answers");
+
+    var answerBubbleAddress = displayAnswer(data.address);
+    answers.appendChild(answerBubbleAddress);
+
+    var answerBubbleData = displayAnswer(data.locationData);
+    answers.appendChild(answerBubbleData);
+
+    setLocation(data.location.longitude, data.location.latitude);
+};
+
+function run() {
     var input = document.getElementById("question");
 
     if (input){
@@ -49,22 +64,18 @@ function display() {
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble);
 
+                var url = "http://127.0.0.1:5000/test?question=" + input.value;
+                alert(url);
+
+                var response = ajax(url, readData);
+                alert(response);
                 input.value = "";
 
-                var url = "https://grandpy-bot-oc.herokuapp.com";
-
-                var response = ajax(url);
-
-                var answerBubble = displayAnswer(response);
-                answers.appendChild(answerBubble);
-
                 answers.scrollTop = answers.scrollHeight;
-
-                setLocation(35.689487, 139.691706);
             }
         });
     }
 };
 
 
-window.onload = display;
+window.onload = run;

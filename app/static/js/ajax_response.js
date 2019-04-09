@@ -3,10 +3,10 @@ function ajax(url, callback) {
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
             response = request.responseText;
-            alert(response);
-            return response;
+            callback(response);
             }
     };
-    request.open("GET", "page.html",  true);
+    request.open("GET", url,  true);
     request.send(null);
 };
+

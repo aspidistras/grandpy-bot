@@ -16,7 +16,6 @@ class MediaWikiObject:
         self.content = None
 
     def search_is_ok(self):
-        print(self.url)
         query = self.result["query"]
         pages = query["pages"]
         if "missing" in pages[0]:
@@ -29,5 +28,4 @@ class MediaWikiObject:
         query = self.result["query"]
         pages = query["pages"]
         self.content = pages[0]["extract"]
-        print(self.content)
         return self.content

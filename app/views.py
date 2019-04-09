@@ -13,10 +13,10 @@ def page():
     return render_template('page.html')
 
 
-@app.route('/', methods=['POST'])
+@app.route('/answer')
 def generate_answer():
-    bot = GrandPyBot()
-    return jsonify({'answer': bot.data(request.form['question'])})
+    bot = GrandPyBot(request.args.get('question'))
+    return jsonify({'answer': bot.return_data()})
 
 
 if __name__ == "__main__":
