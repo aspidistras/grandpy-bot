@@ -77,13 +77,13 @@ header, footer {
     color: aliceblue;
     float: left;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .bubble-text-input {
     background: silver;
     color: gray;
     margin-bottom: 20px;
-    margin-top: 20px;
     float: right;
     position: relative;
 }

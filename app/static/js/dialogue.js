@@ -26,7 +26,7 @@ function displayAnswer(response){
     bubbleText.classList.add("bubble-text", "bubble-text-answer");
 
     var answer = document.createElement("h4");
-    answer.textContent = "blbala";
+    answer.textContent = response;
 
     bubbleText.appendChild(answer);
 
@@ -38,18 +38,20 @@ function displayAnswer(response){
 };
 
 function readData(data) {
-    alert("a");
-    stringData = JSON.parse(data);
+
+    var jsonData = JSON.parse(data)
 
     var answers = document.getElementById("answers");
 
-    var answerBubbleAddress = displayAnswer(data.address);
+    var answerBubbleAddress = displayAnswer(jsonData["locationDetails"]["address"]);
     answers.appendChild(answerBubbleAddress);
 
-    var answerBubbleData = displayAnswer(data.locationData);
+    var answerBubbleData = displayAnswer(jsonData["locationData"]);
     answers.appendChild(answerBubbleData);
 
-    setLocation(data.location.longitude, data.location.latitude);
+    answers.scrollTop = answers.scrollHeight;
+
+    setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]);
 };
 
 function run() {
@@ -64,11 +66,9 @@ function run() {
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble);
 
-                var url = "http://127.0.0.1:5000/test?question=" + input.value;
-                alert(url);
+                var url = "http://127.0.0.1:5000/answer?question=" + input.value;
 
-                var response = ajax(url, readData);
-                alert(response);
+                ajax(url, readData);
                 input.value = "";
 
                 answers.scrollTop = answers.scrollHeight;

@@ -24,7 +24,6 @@ class MediaWikiObject:
             return 1
 
     def search_info(self):
-        print(self.url)
         query = self.result["query"]
         pages = query["pages"]
         self.content = pages[0]["extract"]

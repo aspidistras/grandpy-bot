@@ -16,7 +16,7 @@ def page():
 @app.route('/answer')
 def generate_answer():
     bot = GrandPyBot(request.args.get('question'))
-    return jsonify({'answer': bot.return_data()})
+    return jsonify(bot.return_data())
 
 
 if __name__ == "__main__":

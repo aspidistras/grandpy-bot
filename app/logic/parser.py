@@ -22,13 +22,11 @@ class Parser:
                 self.words.remove(word)
 
     def words_to_keywords(self):
-        with open("C:/Users/clemm/Desktop/GrandPyBot/app/logic/stop_words.json", encoding="utf-8") as stop_words_file:
-            print("a")
+        with open("app/logic/stop_words.json", encoding="utf-8") as stop_words_file:
             stop_words = json.loads(stop_words_file.read())
 
         for word in self.words:
             if word not in stop_words:
                 self.keywords.append(word)
 
-        print(self.keywords)
         return self.keywords

@@ -16,3 +16,6 @@ http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/notebooks/TD2A_eco_de
 IMAGES
 
 https://burst.shopify.com/photos/white-brick-interior-wall-texture?q=background
+https://brand.linkedin.com/downloads
+https://github.com/logos
+https://fr.freepik.com/vecteurs-libre/illustration-du-robot_2606096.htm

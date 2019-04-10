@@ -12,7 +12,7 @@ class GrandPyBot:
         self.keywords = None
         self.location_details = ""
         self.location_data = ""
-        self.data = None
+        self.data = dict()
 
     def parse_sentence(self):
         parser = Parser(self.sentence)
@@ -40,10 +40,8 @@ class GrandPyBot:
     def return_data(self):
         self.parse_sentence()
         if self.get_location_details() and self.get_location_data():
-            data = dict()
-            data["locationDetails"] = self.location_details
-            data["locationData"] = self.location_data
-            self.data = json.dumps(data, ensure_ascii=False)
+            self.data["locationDetails"] = self.location_details
+            self.data["locationData"] = self.location_data
             return self.data
         else:
             return None
