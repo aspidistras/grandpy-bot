@@ -2,8 +2,6 @@ from app.logic.api_media_wiki import MediaWikiObject
 from app.logic.api_google_maps import GoogleMapsObject
 from app.logic.parser import Parser
 
-import json
-
 
 class GrandPyBot:
 
@@ -29,7 +27,12 @@ class GrandPyBot:
             return False
 
     def get_location_data(self):
-        keywords_string = '%20'.join(self.keywords)
+        capitalized_keywords = []
+        for keyword in self.keywords:
+            capitalized_keyword = keyword.capitalize()
+            capitalized_keywords.append(capitalized_keyword)
+        keywords_string = '%20'.join(capitalized_keywords)
+        # https://fr.wikipedia.org/?curid=681159
         media_wiki_object = MediaWikiObject(keywords_string)
         if media_wiki_object.search_is_ok() is 1:
             self.location_data = media_wiki_object.search_info()

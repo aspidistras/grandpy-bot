@@ -43,15 +43,24 @@ function readData(data) {
 
     var answers = document.getElementById("answers");
 
-    var answerBubbleAddress = displayAnswer(jsonData["locationDetails"]["address"]);
-    answers.appendChild(answerBubbleAddress);
+    if(jsonData !== null){
 
-    var answerBubbleData = displayAnswer(jsonData["locationData"]);
-    answers.appendChild(answerBubbleData);
+        var answerBubbleAddress = displayAnswer(jsonData["locationDetails"]["address"]);
+        answers.appendChild(answerBubbleAddress);
 
-    answers.scrollTop = answers.scrollHeight;
+        var answerBubbleData = displayAnswer(jsonData["locationData"]);
+        answers.appendChild(answerBubbleData);
 
-    setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]);
+        answers.scrollTop = answers.scrollHeight;
+
+        setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]);
+    }
+    else {
+        var answerBubbleNoResponse = displayAnswer("GrandPyBot n'a pas trouvé");
+        answers.appendChild(answerBubbleNoResponse);
+
+        answers.scrollTop = answers.scrollHeight;
+    }
 };
 
 function run() {

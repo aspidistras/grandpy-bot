@@ -12,6 +12,7 @@ https://nouvelle-techno.fr/actualites/2017/12/06/pas-a-pas-inserer-une-carte-goo
 https://github.com/6/stopwords-json
 https://www.alsacreations.com
 http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/notebooks/TD2A_eco_debuter_flask.html
+https://developer.mozilla.org/fr/
 
 IMAGES
 

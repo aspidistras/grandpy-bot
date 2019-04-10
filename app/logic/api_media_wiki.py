@@ -13,7 +13,7 @@ class MediaWikiObject:
         self.url = URL_WIKI.format(location)
         self.request = requests.get(self.url)
         self.result = json.loads(self.request.text)
-        self.content = None
+        self.data = ""
 
     def search_is_ok(self):
         query = self.result["query"]
@@ -26,5 +26,6 @@ class MediaWikiObject:
     def search_info(self):
         query = self.result["query"]
         pages = query["pages"]
-        self.content = pages[0]["extract"]
-        return self.content
+        self.data = pages[0]["extract"]
+        # self.data["page_id"] = pages[0]["pageid"]
+        return self.data

@@ -23,6 +23,6 @@ function setLocation(latitude, longitude) {
     coordinates = {lat: latitude, lng: longitude};
     marker.setPosition(coordinates);
     map.panTo(coordinates);
-    map.setZoom(10);
+    map.setZoom(15);
 };
 
