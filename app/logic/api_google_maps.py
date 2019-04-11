@@ -4,7 +4,7 @@
 import json
 import requests
 
-from constants import URL_MAPS, GOOGLE_MAPS_KEY
+from constants import URL_MAPS
 
 
 class GoogleMapsObject:

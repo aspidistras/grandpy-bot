@@ -75,7 +75,7 @@ function run() {
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble);
 
-                var url = "http://127.0.0.1:5000/answer?question=" + input.value;
+                var url = "https://grandpy-bot-oc.herokuapp.com/answer?question=" + input.value;
 
                 ajax(url, readData);
                 input.value = "";
