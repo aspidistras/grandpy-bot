@@ -9,8 +9,8 @@ class Parser:
     def __init__(self, sentence):
 
         self.sentence = sentence
-        self.words = []
-        self.keywords = []
+        self.words = list()
+        self.keywords = list()
 
     def sentence_to_words(self):
         delimiters = " ", ",", "-", ":", "'"
@@ -21,6 +21,8 @@ class Parser:
             if word == "":
                 self.words.remove(word)
 
+        return self.words
+
     def words_to_keywords(self):
         with open("app/logic/stop_words.json", encoding="utf-8") as stop_words_file:
             stop_words = json.loads(stop_words_file.read())
@@ -30,3 +32,9 @@ class Parser:
                 self.keywords.append(word)
 
         return self.keywords
+
+
+a = Parser("Est-ce que tu connais l'adresse de la tour Eiffel ?")
+a.sentence_to_words()
+print(a.words)
+print(a.words_to_keywords())

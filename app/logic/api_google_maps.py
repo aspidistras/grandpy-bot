@@ -4,7 +4,7 @@
 import json
 import requests
 
-from constants import URL_MAPS
+from constants import URL_MAPS, GOOGLE_MAPS_KEY
 
 
 class GoogleMapsObject:
@@ -28,4 +28,5 @@ class GoogleMapsObject:
         self.data["address"] = data[0]["formatted_address"]
         self.data["longitude"] = data[0]["geometry"]["location"]["lng"]
         self.data["latitude"] = data[0]["geometry"]["location"]["lat"]
+        print(self.data)
         return self.data

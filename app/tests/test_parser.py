@@ -6,15 +6,14 @@ from app.logic.parser import Parser
 class TestParser:
 
     def setup_method(self):
-        sentence = "Est-ce que tu connais l'adresse d'OpenClassrooms ?"
-        self.parser = Parser(sentence)
+        self.sentence = "Est-ce que tu connais l'adresse de la tour Eiffel ?"
+        self.parser = Parser(self.sentence)
         
-    def test_sentence_to_words(self):
-        assert self.parser.sentence_to_words() == ["Est", "ce", "que", "tu",
-                                                   "connais", "l", "adresse",
-                                                   "d", "OpenClassrooms", "?"]
+    def test_parser(self):
+        words_result = ["Est", "ce", "que", "tu", "connais", "l", "adresse", "de", "la", "tour", "Eiffel", "?"]
+        assert self.parser.sentence_to_words() == words_result
 
-    def test_keywords(self):
-        assert self.parser.keywords == ["OpenClassrooms"]
+        keywords_result = ["tour", "Eiffel"]
+        assert self.parser.words_to_keywords() == keywords_result
 
 

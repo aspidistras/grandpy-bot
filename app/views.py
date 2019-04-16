@@ -5,8 +5,6 @@ from app.grandpy_bot import GrandPyBot
 
 app = Flask(__name__)
 
-app.config.from_object('config')
-
 
 @app.route('/')
 def page():

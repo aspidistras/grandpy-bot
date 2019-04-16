@@ -37,6 +37,25 @@ function displayAnswer(response){
 
 };
 
+function displayLink(link) {
+
+    var bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+
+    var bubbleText = document.createElement("div");
+    bubbleText.classList.add("bubble-text", "bubble-text-answer");
+
+    var answer = document.createElement("a");
+    answer.textContent = "En savoir plus sur Wikipédia";
+    answer.href = link;
+
+    bubbleText.appendChild(answer);
+
+    bubble.appendChild(bubbleText);
+
+    return bubble;
+};
+
 function readData(data) {
 
     var jsonData = JSON.parse(data)
@@ -48,8 +67,11 @@ function readData(data) {
         var answerBubbleAddress = displayAnswer(jsonData["locationDetails"]["address"]);
         answers.appendChild(answerBubbleAddress);
 
-        var answerBubbleData = displayAnswer(jsonData["locationData"]);
+        var answerBubbleData = displayAnswer(jsonData["locationData"]["content"]);
         answers.appendChild(answerBubbleData);
+
+        var answerBubbleLink = displayLink(jsonData["locationData"]["link"]);
+        answers.appendChild(answerBubbleLink);
 
         answers.scrollTop = answers.scrollHeight;
 

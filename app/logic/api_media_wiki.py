@@ -13,7 +13,7 @@ class MediaWikiObject:
         self.url = URL_WIKI.format(location)
         self.request = requests.get(self.url)
         self.result = json.loads(self.request.text)
-        self.data = ""
+        self.data = dict()
 
     def search_is_ok(self):
         query = self.result["query"]
@@ -26,6 +26,11 @@ class MediaWikiObject:
     def search_info(self):
         query = self.result["query"]
         pages = query["pages"]
-        self.data = pages[0]["extract"]
-        # self.data["page_id"] = pages[0]["pageid"]
+        self.data["content"] = pages[0]["extract"]
+        self.data["link"] = "https://fr.wikipedia.org/?curid={}".format(pages[0]["pageid"])
+        print(self.data)
         return self.data
+
+
+a = MediaWikiObject("tour Eiffel")
+a.search_info()
