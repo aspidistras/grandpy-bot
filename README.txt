@@ -1,3 +1,18 @@
+TO USE THE APP LOCALLY :
+  - clone the repository
+  - install dependencies by running "pip install -r requirements.txt" (install pip in case you haven't already)
+  - replace GOOGLE_MAPS_KEY in constants.py by your own API key
+  - run the run.py file and click on the link generated
+
+
+WEB USER GUIDE :
+  - type your answer to GrandPy Bot in the input area (questions must be about a place, a location or a famous site)
+  - if GrandPy Bot understood your request, he will provide you information linked to your input
+    from the Media Wiki and the Google Maps APIs and update the map with a marker on the location you asked about
+  - if not, he will tell you so and you can continue asking questions anyways
+  - if you refresh the page, you will lose your conversation history
+
+
 SOURCES
 
 https://developers.google.com/maps/documentation/urls/guide?hl=fr

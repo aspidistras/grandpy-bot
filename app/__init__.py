@@ -1,4 +1,5 @@
 ﻿"""imports the app"""
 
 
-from .views import APP
+from flask import Flask
+from .views import app
