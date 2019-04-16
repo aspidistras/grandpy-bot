@@ -1,12 +1,14 @@
-"""uses Media Wiki's API to get the information on the address"""
+"""uses Media Wiki's API to get the information on the user input"""
 
-import requests
 import json
+import requests
 
 from constants import URL_WIKI
 
 
 class MediaWikiObject:
+    """initializes MediaWikiObject with its attributes and methods to determine
+    whether API search is ok and if so get the data"""
 
     def __init__(self, location):
         self.location = location
@@ -16,21 +18,21 @@ class MediaWikiObject:
         self.data = dict()
 
     def search_is_ok(self):
+        """checks if a Wikipedia page for the keywords can be found"""
+
         query = self.result["query"]
         pages = query["pages"]
         if "missing" in pages[0]:
             return None
-        else:
-            return 1
+
+        return 1
 
     def search_info(self):
+        """goes through the result to put into a dictionary the page content and link"""
+
         query = self.result["query"]
         pages = query["pages"]
         self.data["content"] = pages[0]["extract"]
         self.data["link"] = "https://fr.wikipedia.org/?curid={}".format(pages[0]["pageid"])
         print(self.data)
         return self.data
-
-
-a = MediaWikiObject("tour Eiffel")
-a.search_info()
