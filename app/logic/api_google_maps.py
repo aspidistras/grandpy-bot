@@ -22,7 +22,7 @@ class GoogleMapsObject:
     def search_is_ok(self):
         """checks if request's status is OK"""
 
-        if self.status == "OK":
+        if self.status == "OK": # if the request was valid
             return 1
 
         return None

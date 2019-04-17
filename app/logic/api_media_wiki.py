@@ -22,7 +22,7 @@ class MediaWikiObject:
 
         query = self.result["query"]
         pages = query["pages"]
-        if "missing" in pages[0]:
+        if "missing" in pages[0]: # if the page requested doesn't exist
             return None
 
         return 1

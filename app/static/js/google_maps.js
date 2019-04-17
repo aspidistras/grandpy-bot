@@ -9,7 +9,7 @@ function initMap() {
 	};
 	map = new google.maps.Map(document.getElementById('map'), options);
 
-	marker = new google.maps.Marker({
+	marker = new google.maps.Marker({ // to set a default marker
 		position: coordinates,
 		map: map,
 		title: 'Paris'
@@ -19,7 +19,7 @@ function initMap() {
 
 google.maps.event.addDomListener(window, "load", initialize);
 
-function setLocation(latitude, longitude) {
+function setLocation(latitude, longitude) { // to update marker location according to returned data
     coordinates = {lat: latitude, lng: longitude};
     marker.setPosition(coordinates);
     map.panTo(coordinates);

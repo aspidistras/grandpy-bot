@@ -1,4 +1,4 @@
-function displayInput(){
+function displayInput(){ // create bubble to display user input
 
     var bubble = document.createElement("div");
     bubble.classList.add("bubble");
@@ -17,7 +17,7 @@ function displayInput(){
     return bubble;
 };
 
-function displayAnswer(response){
+function displayAnswer(response){ // create bubble to display GrandPy Bot answer
 
     var bubble = document.createElement("div");
     bubble.classList.add("bubble");
@@ -37,7 +37,7 @@ function displayAnswer(response){
 
 };
 
-function displayLink(link) {
+function displayLink(link) { // creates the bubble to display wiki links
 
     var bubble = document.createElement("div");
     bubble.classList.add("bubble");
@@ -61,32 +61,32 @@ function displayLink(link) {
     return bubble;
 };
 
-function readData(data) {
+function readData(data) { // handle returned data
 
     var jsonData = JSON.parse(data)
 
     var answers = document.getElementById("answers");
 
-    if(jsonData !== null){
+    if(jsonData !== null){ // if app returned data
 
-        var answerBubbleAddress = displayAnswer(jsonData["locationDetails"]["address"]);
+        var answerBubbleAddress = displayAnswer(jsonData["locationDetails"]["address"]); // display google maps address
         answers.appendChild(answerBubbleAddress);
 
-        var answerBubbleData = displayAnswer(jsonData["locationData"]["content"]);
+        var answerBubbleData = displayAnswer(jsonData["locationData"]["content"]); // display wiki data
         answers.appendChild(answerBubbleData);
 
-        var answerBubbleLink = displayLink(jsonData["locationData"]["link"]);
+        var answerBubbleLink = displayLink(jsonData["locationData"]["link"]); // display wiki link bubble
         answers.appendChild(answerBubbleLink);
 
         answers.scrollTop = answers.scrollHeight;
 
-        setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]);
+        setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]); // change marker location
     }
     else {
-        var answerBubbleNoResponse = displayAnswer("GrandPyBot n'a pas trouvé");
+        var answerBubbleNoResponse = displayAnswer("GrandPyBot n'a pas trouvé"); // if data == null
         answers.appendChild(answerBubbleNoResponse);
 
-        answers.scrollTop = answers.scrollHeight;
+        answers.scrollTop = answers.scrollHeight; // to adjust the scroll to the latest bubbles
     }
 };
 
@@ -95,23 +95,24 @@ function run() {
 
     if (input){
         input.addEventListener("keyup",function(e){
-            if (e.keyCode === 13) {
+            if (e.keyCode === 13) { // if the enter key is pressed
 
                 var answers = document.getElementById("answers");
 
                 var inputBubble = displayInput();
-                answers.appendChild(inputBubble);
+                answers.appendChild(inputBubble); // to display the user input
 
                 var url = "https://" + window.location.host + "/answer?question=" + input.value;
 
-                ajax(url, readData);
-                input.value = "";
+                ajax(url, readData); // calling ajax request
 
-                answers.scrollTop = answers.scrollHeight;
+                input.value = ""; // to reset the form
+
+                answers.scrollTop = answers.scrollHeight; // to adjust the scroll to the latest bubbles
             }
         });
     }
 };
 
 
-window.onload = run;
+window.onload = run; // calls the run function on window load

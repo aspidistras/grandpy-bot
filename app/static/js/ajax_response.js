@@ -1,20 +1,15 @@
-function ajax(url, callback) {
-    var request = new XMLHttpRequest();
+function ajax(url, callback) { // ajax call
+    var request = new XMLHttpRequest(); // create request object
     request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-            response = request.response;
-            callback(response);
+        if (request.readyState == 4 && request.status == 200) { // if the request succeeded
+            response = request.response; // get request response
+            callback(response); // calling callback function to handle data
             }
     };
 
-    if (withCredentials in request) {
-        request.open("GET", url,  true);
-    }
-
-    else {
-        request = null;
-        return request;
-    }
+    request.withCredentials = true; // to allow CORS
+    request.open("GET", url,  true);
 
     request.send(null);
 };
+

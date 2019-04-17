@@ -26,7 +26,7 @@ class GrandPyBot:
 
     def get_location_details(self):
         """creates GoogleMapsObject instance to get the address and location details"""
-        keywords_string = '%20'.join(self.keywords)
+        keywords_string = '%20'.join(self.keywords)  # to match url parameters' pattern
         google_maps_object = GoogleMapsObject(keywords_string)
         if google_maps_object.search_is_ok() == 1:
             self.location_details = google_maps_object.search_address()
@@ -39,8 +39,8 @@ class GrandPyBot:
         capitalized_keywords = []
         for keyword in self.keywords:
             capitalized_keyword = keyword.capitalize()
-            capitalized_keywords.append(capitalized_keyword)
-        keywords_string = '%20'.join(capitalized_keywords)
+            capitalized_keywords.append(capitalized_keyword) # to match url parameters' pattern
+        keywords_string = '%20'.join(capitalized_keywords) # to match url parameters' pattern
         media_wiki_object = MediaWikiObject(keywords_string)
         if media_wiki_object.search_is_ok() == 1:
             self.location_data = media_wiki_object.search_info()
@@ -51,7 +51,7 @@ class GrandPyBot:
     def return_data(self):
         """returns a dictionary with every element needed to provide the user an answer"""
         self.parse_sentence()
-        if self.get_location_details() and self.get_location_data():
+        if self.get_location_details() and self.get_location_data():  # if the searches got through
             self.data["locationDetails"] = self.location_details
             self.data["locationData"] = self.location_data
             return self.data

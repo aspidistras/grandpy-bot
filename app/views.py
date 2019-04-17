@@ -19,7 +19,8 @@ def page():
 def generate_answer():
     """returns the answer constructed when there's a user input"""
     bot = GrandPyBot(request.args.get('question'))
-    return jsonify(bot.return_data())
+    # instantiates GrandPyBot object with the user input value
+    return jsonify(bot.return_data())  # returns data in json
 
 
 if __name__ == "__main__":
