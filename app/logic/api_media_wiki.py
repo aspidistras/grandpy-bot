@@ -34,5 +34,4 @@ class MediaWikiObject:
         pages = query["pages"]
         self.data["content"] = pages[0]["extract"]
         self.data["link"] = "https://fr.wikipedia.org/?curid={}".format(pages[0]["pageid"])
-        print(self.data)
         return self.data

@@ -35,5 +35,4 @@ class GoogleMapsObject:
         self.data["address"] = data[0]["formatted_address"]
         self.data["longitude"] = data[0]["geometry"]["location"]["lng"]
         self.data["latitude"] = data[0]["geometry"]["location"]["lat"]
-        print(self.data)
         return self.data

@@ -45,9 +45,14 @@ function displayLink(link) {
     var bubbleText = document.createElement("div");
     bubbleText.classList.add("bubble-text", "bubble-text-answer");
 
-    var answer = document.createElement("a");
-    answer.textContent = "En savoir plus sur Wikipédia";
-    answer.href = link;
+    var answer = document.createElement("h4");
+
+    var linkText = document.createElement("a");
+    linkText.classList.add("link");
+    linkText.textContent = "En savoir plus sur Wikipédia";
+    linkText.href = link;
+
+    answer.appendChild(linkText);
 
     bubbleText.appendChild(answer);
 
@@ -97,7 +102,7 @@ function run() {
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble);
 
-                var url = "https://grandpy-bot-oc.herokuapp.com/answer?question=" + input.value;
+                var url = "http://" + window.location.host + "/answer?question=" + input.value;
 
                 ajax(url, readData);
                 input.value = "";

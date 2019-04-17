@@ -118,3 +118,12 @@ header, footer {
         width: 90%;
     }
 }
+
+:link, :visited {
+    color: lightgray;
+}
+
+.link:hover {
+    color: white;
+    font-weight: bold;
+}
