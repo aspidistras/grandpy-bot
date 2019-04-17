@@ -28,6 +28,7 @@ https://github.com/6/stopwords-json
 https://www.alsacreations.com
 http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/notebooks/TD2A_eco_debuter_flask.html
 https://developer.mozilla.org/fr/
+https://www.journaldunet.fr/web-tech/developpement/1202403-xmlhttprequest-sur-un-domaine-different-comment-parametrer-access-control-allow-origin/
 
 IMAGES
 

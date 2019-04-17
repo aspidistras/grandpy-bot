@@ -102,7 +102,7 @@ function run() {
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble);
 
-                var url = "http://" + window.location.host + "/answer?question=" + input.value;
+                var url = "https://" + window.location.host + "/answer?question=" + input.value;
 
                 ajax(url, readData);
                 input.value = "";

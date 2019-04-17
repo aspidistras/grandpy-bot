@@ -6,7 +6,15 @@ function ajax(url, callback) {
             callback(response);
             }
     };
-    request.open("GET", url,  true);
+
+    if (withCredentials in request) {
+        request.open("GET", url,  true);
+    }
+
+    else {
+        request = null;
+        return request;
+    }
+
     request.send(null);
 };
-
