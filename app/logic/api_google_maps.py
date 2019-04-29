@@ -11,9 +11,9 @@ class GoogleMapsObject:
     """initializes GoogleMapsObject with its attributes and methods to determine
     whether API search is ok and if so get the data"""
 
-    def __init__(self, keyword):
-        self.keyword = keyword
-        self.url = URL_MAPS.format(self.keyword, GOOGLE_MAPS_KEY)
+    def __init__(self, keywords):
+        self.keywords = keywords
+        self.url = URL_MAPS.format(self.keywords, GOOGLE_MAPS_KEY)
         self.request = requests.get(self.url)
         self.result = json.loads(self.request.text)
         self.status = self.result["status"]
@@ -22,7 +22,7 @@ class GoogleMapsObject:
     def search_is_ok(self):
         """checks if request's status is OK"""
 
-        if self.status == "OK": # if the request was valid
+        if self.status == "OK":  # if the request was valid
             return 1
 
         return None

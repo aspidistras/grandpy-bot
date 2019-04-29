@@ -22,7 +22,7 @@ class MediaWikiObject:
 
         query = self.result["query"]
         pages = query["pages"]
-        if "missing" in pages[0]: # if the page requested doesn't exist
+        if "missing" in pages[0]:  # if the page requested doesn't exist
             return None
 
         return 1
@@ -35,3 +35,4 @@ class MediaWikiObject:
         self.data["content"] = pages[0]["extract"]
         self.data["link"] = "https://fr.wikipedia.org/?curid={}".format(pages[0]["pageid"])
         return self.data
+
