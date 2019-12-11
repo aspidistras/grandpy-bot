@@ -21,7 +21,7 @@
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="page">
 
         <header class="row">
             <div class="col-xs-12">
@@ -31,8 +31,8 @@
 
         </header>
 
-        <main id="body" class="row">
-            <div id="dialogue-zone" class="center-block">
+        <main id="body" class="row h-100 align-items-center justify-content-center text-center">
+            <div id="dialogue-zone" class="row center-block ">
                 <div id="chat-box" class="row center-block">
                     <div id="entry-zone">
                         <form method="POST">
@@ -56,13 +56,15 @@
 
 
         <footer class="row">
-                <p>Clémence Mourot</p>
-                <a href="https://github.com/ClemMourot/GrandPyBot">
-                    <img src="../static/pictures/github_logo.png"  alt="Repository GitHub" class="logo"/>
-                </a>
-                <a href="https://www.linkedin.com/in/clémence-mourot-839490144/">
-                    <img src="../static/pictures/linkedin_logo.png" alt="Profil LinkedIn" class="logo"/>
-                </a>
+                <p class="row">Clémence Mourot</p>
+                <div class="row" id="logos">
+                    <a class="logo" href="https://github.com/ClemMourot/GrandPyBot">
+                        <img src="../static/pictures/github_logo.png"  alt="Repository GitHub" />
+                    </a>
+                    <a class="logo" href="https://www.linkedin.com/in/clémence-mourot-839490144/">
+                        <img src="../static/pictures/linkedin_logo.png" alt="Profil LinkedIn"/>
+                    </a>
+                </div>
         </footer>
 
     </div>

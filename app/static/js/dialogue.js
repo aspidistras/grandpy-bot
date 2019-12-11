@@ -83,7 +83,11 @@ function readData(data) { // handle returned data
         setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]); // change marker location
     }
     else {
-        var answerBubbleNoResponse = displayAnswer("", "Désolé, je n'ai pas trouvé ! Essaye de me poser une autre question"); // if data == null
+
+        var noResponseAnswersArray = ["Désolé, je n'ai pas trouvé ! Essaye de me poser une autre question", "Je me fais vieux, je ne me rappelle plus de cet endroit, désolé !",
+        "Je suis trop fatigué pour répondre à cette question, essaye un autre endroit !"];
+
+        var answerBubbleNoResponse = displayAnswer("", noResponseAnswersArray[Math.floor(Math.random()*items.length)]); // if data == null, display random no reponse answer
         answers.appendChild(answerBubbleNoResponse);
 
         answers.scrollTop = answers.scrollHeight; // to adjust the scroll to the latest bubbles

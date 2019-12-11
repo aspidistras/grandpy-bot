@@ -3,7 +3,7 @@
 
 import urllib.request
 
-from app.logic.api_google_maps import GoogleMapsObject
+from app.utils.api_google_maps import GoogleMapsObject
 
 
 class TestGoogleMapsApi:

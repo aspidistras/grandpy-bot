@@ -1,7 +1,7 @@
 """"tests parsing a sentence into words then into keywords"""
 
 
-from app.logic.parser import Parser
+from app.utils.parser import Parser
 
 
 class TestParser:

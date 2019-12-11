@@ -1,9 +1,9 @@
 """implements GrandPyBot class"""
 
 
-from app.logic.api_media_wiki import MediaWikiObject
-from app.logic.api_google_maps import GoogleMapsObject
-from app.logic.parser import Parser
+from app.utils.api_media_wiki import MediaWikiObject
+from app.utils.api_google_maps import GoogleMapsObject
+from app.utils.parser import Parser
 
 
 class GrandPyBot:
@@ -12,6 +12,7 @@ class GrandPyBot:
     """
 
     def __init__(self, user_input):
+
         self.sentence = user_input
         self.keywords = None
         self.location_details = ""
@@ -20,12 +21,14 @@ class GrandPyBot:
 
     def parse_sentence(self):
         """creates Parser instance to get keywords"""
+
         parser = Parser(self.sentence)
         parser.sentence_to_words()
         self.keywords = parser.words_to_keywords()
 
     def get_location_details(self):
         """creates GoogleMapsObject instance to get the address and location details"""
+
         keywords_string = '%20'.join(self.keywords)  # to match url parameters' pattern
         google_maps_object = GoogleMapsObject(keywords_string)
         if google_maps_object.search_is_ok() == 1:
@@ -36,6 +39,7 @@ class GrandPyBot:
 
     def get_location_data(self):
         """creates MediaWikiObject to get the information related to the obtained keywords"""
+
         capitalized_keywords = []
         for keyword in self.keywords:
             capitalized_keyword = keyword.capitalize()
@@ -50,6 +54,7 @@ class GrandPyBot:
 
     def return_data(self):
         """returns a dictionary with every element needed to provide the user an answer"""
+
         self.parse_sentence()
         if self.get_location_details() and self.get_location_data():  # if the searches got through
             self.data["locationDetails"] = self.location_details

@@ -3,7 +3,7 @@
 
 import urllib
 
-from app.logic.api_media_wiki import MediaWikiObject
+from app.utils.api_media_wiki import MediaWikiObject
 
 
 class TestMediaWikiAPI:
