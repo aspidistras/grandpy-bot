@@ -1,4 +1,4 @@
-﻿"""imports the app"""
+"""imports the app"""
 
 
 from flask import Flask

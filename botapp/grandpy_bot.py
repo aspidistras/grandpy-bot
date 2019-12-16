@@ -1,9 +1,9 @@
 """implements GrandPyBot class"""
 
 
-from app.utils.api_media_wiki import MediaWikiObject
-from app.utils.api_google_maps import GoogleMapsObject
-from app.utils.parser import Parser
+from botapp.utils.api_media_wiki import MediaWikiObject
+from botapp.utils.api_google_maps import GoogleMapsObject
+from botapp.utils.parser import Parser
 
 
 class GrandPyBot:

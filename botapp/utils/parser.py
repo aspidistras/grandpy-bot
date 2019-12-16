@@ -30,7 +30,7 @@ class Parser:
     def words_to_keywords(self):
         """extracts keywords from words and puts them into a list"""
 
-        with open("app/logic/stop_words.json", encoding="utf-8") as stop_words_file:
+        with open("botapp/utils/stop_words.json", encoding="utf-8") as stop_words_file:
             # open json file with stop words in order to parse
             stop_words = json.loads(stop_words_file.read())
 
