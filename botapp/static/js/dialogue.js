@@ -69,18 +69,31 @@ function readData(data) { // handle returned data
 
     if(jsonData !== null){ // if app returned data
 
-        var answerBubbleAddress = displayAnswer("Voici l'adresse : ", jsonData["locationDetails"]["address"]); // display google maps address
-        answers.appendChild(answerBubbleAddress);
+        if(jsonData["locationDetails"] !== null){
+            var answerBubbleAddress = displayAnswer("Voici l'adresse : ", jsonData["locationDetails"]["address"]); // display google maps address
+            answers.appendChild(answerBubbleAddress);
 
-        var answerBubbleData = displayAnswer("", jsonData["locationData"]["content"]); // display wiki data
-        answers.appendChild(answerBubbleData);
+            setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]); // change marker location
+        }
+        else {
+            var answerBubbleAddress = displayAnswer("Je ne me rappelle plus de l'adresse mais voici quelques informations !"); // display google maps address
+            answers.appendChild(answerBubbleAddress);
+        }
 
-        var answerBubbleLink = displayLink(jsonData["locationData"]["link"]); // display wiki link bubble
-        answers.appendChild(answerBubbleLink);
+        if(jsonData["locationData"] !== null){
+            var answerBubbleData = displayAnswer("", jsonData["locationData"]["content"]); // display wiki data
+            answers.appendChild(answerBubbleData);
+
+            var answerBubbleLink = displayLink(jsonData["locationData"]["link"]); // display wiki link bubble
+            answers.appendChild(answerBubbleLink);
+        }
+        else {
+            var answerBubbleData = displayAnswer("Je me fais vieux, je ne me rappelle plus de l'histoire de cet endroit."); // display wiki data
+            answers.appendChild(answerBubbleData);
+        }
 
         answers.scrollTop = answers.scrollHeight;
 
-        setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]); // change marker location
     }
     else {
 

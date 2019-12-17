@@ -56,9 +56,21 @@ class GrandPyBot:
         """returns a dictionary with every element needed to provide the user an answer"""
 
         self.parse_sentence()
-        if self.get_location_details() and self.get_location_data():  # if the searches got through
-            self.data["locationDetails"] = self.location_details
-            self.data["locationData"] = self.location_data
-            return self.data
 
-        return None
+        if self.get_location_details():
+            self.data["locationDetails"] = self.location_details
+
+        else:
+            self.data["locationDetails"] = None
+        
+        if self.get_location_data():  # if the searches got through
+            self.data["locationData"] = self.location_data
+        
+        else:
+            self.data["locationData"] = None
+
+        if self.data["locationData"] is None and self.data["locationDetails"] is None:
+            return None
+        
+        print(self.data)
+        return self.data
