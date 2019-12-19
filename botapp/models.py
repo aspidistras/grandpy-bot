@@ -1,12 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
 import logging as lg
 from flask import Flask
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 # Create database connection object
 db = SQLAlchemy(app)
+migrate = Migrate(app, db) # this
 
 class Logging(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,4 +21,6 @@ class Logging(db.Model):
 
     
 
-db.create_all()
+def init_db():
+    db.drop_all()
+    db.create_all()

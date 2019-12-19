@@ -6,8 +6,6 @@ from flask import Flask, render_template, request, jsonify
 from botapp.grandpy_bot import GrandPyBot
 from botapp.models import app
 
-app.config.from_object('config')
-
 
 @app.route('/')
 def page():
