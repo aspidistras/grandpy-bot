@@ -8,4 +8,5 @@ URL_WIKI = "https://fr.wikipedia.org/w/api.php?action=query" \
 URL_MAPS = "https://maps.googleapis.com/maps/api/geocode/json?address={}&key={}"
 
 
-GOOGLE_MAPS_KEY = "AIzaSyA9g664fFNDknx_Btz0JLoVMw-4uYHXzK8"
+GOOGLE_MAPS_KEY = "AIzaSyDXtniyMhQbCvojx0VFoDgNPrtj03n90r8"
+

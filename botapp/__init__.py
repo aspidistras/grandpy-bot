@@ -3,12 +3,10 @@
 
 import os
 from flask import Flask
+from flask_migrate import Migrate
 
-from .views import app
+from botapp.views import app
 from . import models
 
 # Connect sqlalchemy to app
 models.db.init_app(app)
-
-def init_db():
-    models.init_db()

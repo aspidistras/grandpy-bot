@@ -1,7 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
 import logging as lg
+from flask import Flask
 
-from .views import app
+app = Flask(__name__)
+app.config.from_object('config')
 
 # Create database connection object
 db = SQLAlchemy(app)
@@ -15,7 +17,6 @@ class Logging(db.Model):
         self.request = request
         self.null_api = null_api
 
-def init_db():
-    db.drop_all()
-    db.create_all()
-    lg.warning('Database initialized !')
+    
+
+db.create_all()

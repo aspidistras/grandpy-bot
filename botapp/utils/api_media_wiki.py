@@ -20,6 +20,8 @@ class MediaWikiObject:
     def search_is_ok(self):
         """checks if a Wikipedia page for the keywords can be found"""
 
+        if not "query" in self.result:
+            return None
         query = self.result["query"]
         pages = query["pages"]
         if "missing" in pages[0]:  # if the page requested doesn't exist

@@ -26,7 +26,14 @@ function displayAnswer(text, response){ // create bubble to display GrandPy Bot 
     bubbleText.classList.add("bubble-text", "bubble-text-answer");
 
     var answer = document.createElement("h4");
-    answer.textContent = text + response;
+
+    if(response != null){
+        answer.textContent = text + response;
+    }
+    else {
+        answer.textContent = text;
+    }
+    
 
     bubbleText.appendChild(answer);
 
@@ -76,7 +83,7 @@ function readData(data) { // handle returned data
             setLocation(jsonData["locationDetails"]["latitude"], jsonData["locationDetails"]["longitude"]); // change marker location
         }
         else {
-            var answerBubbleAddress = displayAnswer("Je ne me rappelle plus de l'adresse mais voici quelques informations !"); // display google maps address
+            var answerBubbleAddress = displayAnswer("Je ne me rappelle plus de l'adresse mais voici quelques informations !", null); // display google maps address
             answers.appendChild(answerBubbleAddress);
         }
 
@@ -88,7 +95,7 @@ function readData(data) { // handle returned data
             answers.appendChild(answerBubbleLink);
         }
         else {
-            var answerBubbleData = displayAnswer("Je me fais vieux, je ne me rappelle plus de l'histoire de cet endroit."); // display wiki data
+            var answerBubbleData = displayAnswer("Malheureusement, je ne me rappelle plus de l'histoire de cet endroit.", null); // display wiki data
             answers.appendChild(answerBubbleData);
         }
 
@@ -100,7 +107,7 @@ function readData(data) { // handle returned data
         var noResponseAnswersArray = ["Désolé, je n'ai pas trouvé ! Essaye de me poser une autre question", "Je me fais vieux, je ne me rappelle plus de cet endroit, désolé !",
         "Je suis trop fatigué pour répondre à cette question, essaye un autre endroit !"];
 
-        var answerBubbleNoResponse = displayAnswer("", noResponseAnswersArray[Math.floor(Math.random()*items.length)]); // if data == null, display random no reponse answer
+        var answerBubbleNoResponse = displayAnswer("", noResponseAnswersArray[Math.floor(Math.random()*noResponseAnswersArray.length)]); // if data == null, display random no reponse answer
         answers.appendChild(answerBubbleNoResponse);
 
         answers.scrollTop = answers.scrollHeight; // to adjust the scroll to the latest bubbles
@@ -119,7 +126,7 @@ function run() {
                 var inputBubble = displayInput();
                 answers.appendChild(inputBubble); // to display the user input
 
-                var url = "https://" + window.location.host + "/answer?question=" + input.value;
+                var url = "http://" + window.location.host + "/answer?question=" + input.value;
 
                 ajax(url, readData); // calling ajax request
 

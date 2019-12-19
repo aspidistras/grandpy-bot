@@ -4,6 +4,7 @@
 from botapp.utils.api_media_wiki import MediaWikiObject
 from botapp.utils.api_google_maps import GoogleMapsObject
 from botapp.utils.parser import Parser
+from .models import db, Logging
 
 
 class GrandPyBot:
@@ -62,15 +63,21 @@ class GrandPyBot:
 
         else:
             self.data["locationDetails"] = None
+            location_details_error = Logging(request=self.sentence, null_api="GoogleMaps")
+            db.session.add(location_details_error)  # Adds new Logging record to database
+            db.session.commit()  # Commits all changes
+
         
         if self.get_location_data():  # if the searches got through
             self.data["locationData"] = self.location_data
         
         else:
             self.data["locationData"] = None
+            location_data_error = Logging(request=self.sentence, null_api="Wikipédia")
+            db.session.add(location_data_error)  # Adds new Logging record to database
+            db.session.commit()  # Commits all changes
 
         if self.data["locationData"] is None and self.data["locationDetails"] is None:
             return None
         
-        print(self.data)
         return self.data
