@@ -1,4 +1,4 @@
-"""tests Media Wiki's API response with mock"""
+"""tests Media Wiki's API response"""
 
 
 import urllib

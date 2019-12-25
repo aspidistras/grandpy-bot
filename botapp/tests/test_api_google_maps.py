@@ -1,4 +1,4 @@
-"""tests Google Maps's API response with mock"""
+"""tests Google Maps's API response"""
 
 
 import urllib.request
@@ -17,8 +17,8 @@ class TestGoogleMapsApi(unittest.TestCase):
     def test_search(self):
         """tests google maps search and asserts results"""
 
-        results = {'address': 'Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France',
-                'longitude': 2.2944813, 'latitude': 48.85837009999999}
+        results = {'address': '5 Avenue Anatole France Champ de Mars, 75007 Paris, France',
+                'longitude': 2.2944833, 'latitude': 48.8583698}
 
         assert self.google_maps_object.search_address() == results
 

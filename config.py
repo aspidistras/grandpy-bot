@@ -11,3 +11,4 @@ else:
     conn = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+

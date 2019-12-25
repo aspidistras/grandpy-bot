@@ -27,14 +27,15 @@ class MediaWikiObject:
         if "missing" in pages[0]:  # if the page requested doesn't exist
             return None
 
-        return 1
+        return True
 
     def search_info(self):
         """goes through the result to put into a dictionary the page content and link"""
 
-        query = self.result["query"]
-        pages = query["pages"]
-        self.data["content"] = pages[0]["extract"]
-        self.data["link"] = "https://fr.wikipedia.org/?curid={}".format(pages[0]["pageid"])
-        return self.data
+        if self.search_is_ok():
+            query = self.result["query"]
+            pages = query["pages"]
+            self.data["content"] = pages[0]["extract"]
+            self.data["link"] = "https://fr.wikipedia.org/?curid={}".format(pages[0]["pageid"])
+            return self.data
 

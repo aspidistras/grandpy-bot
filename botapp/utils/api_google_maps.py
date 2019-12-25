@@ -23,17 +23,18 @@ class GoogleMapsObject:
         """checks if request's status is OK"""
 
         if self.status == "OK":  # if the request was valid
-            return 1
+            return True
 
-        return None
+        else:
+            return None
 
     def search_address(self):
         """goes through the result to put into a dictionary the address and location's geometry
         details and returns data"""
-
-        data = self.result["results"]
-        print(data)
-        self.data["address"] = data[0]["formatted_address"]
-        self.data["longitude"] = data[0]["geometry"]["location"]["lng"]
-        self.data["latitude"] = data[0]["geometry"]["location"]["lat"]
-        return self.data
+        
+        if self.status:
+            data = self.result["results"]
+            self.data["address"] = data[0]["formatted_address"]
+            self.data["longitude"] = data[0]["geometry"]["location"]["lng"]
+            self.data["latitude"] = data[0]["geometry"]["location"]["lat"]
+            return self.data
