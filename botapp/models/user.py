@@ -11,3 +11,9 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())
     role = db.Column(db.String(255))
+
+    def __init__(self, email, password, active, role):
+        self.email = email
+        self.password = password
+        self.active = active
+        self.role = role
