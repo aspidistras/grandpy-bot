@@ -10,7 +10,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 from botapp.grandpy_bot import GrandPyBot
-from botapp.models import create_test_app, db, Logging
+from botapp.app import create_test_app
+from botapp.views import db
+from botapp.models.logging import Logging
 
 
 class TestLogging(unittest.TestCase):

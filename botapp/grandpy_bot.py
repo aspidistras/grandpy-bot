@@ -4,7 +4,8 @@
 from botapp.utils.api_media_wiki import MediaWikiObject
 from botapp.utils.api_google_maps import GoogleMapsObject
 from botapp.utils.parser import Parser
-from .models import db, Logging
+from botapp.app import db
+from botapp.models.logging import Logging
 
 
 class GrandPyBot:
