@@ -6,17 +6,29 @@ from flask import Flask, render_template, request, jsonify
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 import flask_login as login
+from flask_migrate import Migrate
 
 from botapp.grandpy_bot import GrandPyBot
 from botapp.app import create_production_app
 from botapp.models.logging import Logging, LoggingView, db
+from botapp.models.user import User
+from botapp.models.admin import AdminIndexView
 
 
 app = create_production_app()
+
+db.init_app(app)
+app.app_context().push()
+Migrate(app, db)
+
 login_manager = login.LoginManager()
 login_manager.init_app(app)
 
-admin = Admin(app, name='GrandPy Bot', template_mode='bootstrap3')
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.query(User).get(user_id)
+
+admin = Admin(app, name='GrandPy Bot', index_view=AdminIndexView(), template_mode='bootstrap3', base_template='custom-admin.html')
 admin.add_view(LoggingView(Logging, db.session))
 
 @app.route('/')

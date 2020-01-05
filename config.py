@@ -11,4 +11,4 @@ else:
     conn = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+SECRET_KEY = os.environ['SECRET_KEY']
