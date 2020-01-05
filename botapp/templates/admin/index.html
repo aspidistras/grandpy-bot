@@ -1,0 +1,36 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/admin-style.css">
+{{ super() }}
+<div class="row-fluid">
+
+    <div>
+        {% if current_user.is_authenticated %}
+        <h1>Admin page</h1>
+        <h5>
+            Here you can browse failed requests logs.
+        </h5>
+        {% else %}
+        <form method="POST" action="">
+            {{ form.hidden_tag() if form.hidden_tag }}
+            {% for f in form if f.type != 'CSRFTokenField' %}
+            <div>
+            {{ f.label }}
+            {{ f }}
+            {% if f.errors %}
+            <ul>
+                {% for e in f.errors %}
+                <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            </div>
+            {% endfor %}
+            <button class="btn btn-index" type="submit">Login</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <a class="btn btn-primary btn-index" href="/"><i class="icon-arrow-left icon-white"></i>Go back to app</a>
+</div>
+{% endblock body %}
