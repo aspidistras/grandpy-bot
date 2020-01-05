@@ -35,6 +35,8 @@ https://flask.palletsprojects.com/en/1.1.x/
 https://flask-admin.readthedocs.io/en/latest/
 https://flask-login.readthedocs.io/en/latest/
 https://hackersandslackers.com/flask-sqlalchemy-database-models/
+https://xvrdm.github.io/2017/07/03/testing-flask-sqlalchemy-database-with-pytest/
+
 
 
 IMAGES

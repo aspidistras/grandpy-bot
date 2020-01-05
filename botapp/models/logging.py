@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, redirect, url_for, request
 from flask_migrate import Migrate
 from flask_admin.contrib import sqla
 from flask_sqlalchemy import SQLAlchemy
@@ -27,4 +27,11 @@ class LoggingView(sqla.ModelView):
     column_filters = ['null_api']
 
     def is_accessible(self):
-        return current_user.role == 'admin'
+        if current_user.is_authenticated and current_user.role == "admin":
+            return True
+        else:
+            return False
+
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        return redirect(url_for('admin.index', next=request.url))
