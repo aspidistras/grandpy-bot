@@ -20,7 +20,8 @@ class TestGoogleMapsApi(unittest.TestCase):
         results = {'address': '5 Avenue Anatole France Champ de Mars, 75007 Paris, France',
                 'longitude': 2.2944833, 'latitude': 48.8583698}
         
-        assert self.google_maps_object.search_address() == results
+        if self.google_maps_object.search_is_ok():
+            assert self.google_maps_object.search_address() == results
 
 
 if __name__ == '__main__':

@@ -116,3 +116,4 @@ Pipfile
 Pipfile.lock
 *.xml
 *.iml
+botapp/app.test_db
