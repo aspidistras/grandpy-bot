@@ -1,8 +1,9 @@
 TO USE THE APP LOCALLY :
   - clone the repository
   - install dependencies by running "pip install -r requirements.txt" (install pip in case you haven't already)
-  - replace GOOGLE_MAPS_KEY in constants.py by your own API key
-  - run the run.py file and click on the link generated
+  - set GOOGLE_MAPS_KEY and SECRET_KEY in your virtual env with your own keys
+  - migrate the database in the flask shell and create a User instance with role 'admin' if you want to access the Logging View
+  - run the run.py file and click on the link generated (go to /admin to access admin view)
 
 
 WEB USER GUIDE :
