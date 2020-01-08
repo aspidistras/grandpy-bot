@@ -47,6 +47,7 @@ def create_test_app():
 
     return app
 
+
 def init_db():
     db.drop_all()
     db.create_all()
