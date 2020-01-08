@@ -13,6 +13,6 @@ from botapp.models import logging, user
 db.init_app(app)
 
 @app.cli.command()
-def init_db():
+def init_sql_db():
+    """sets cli command to init database"""
     init_db()
-

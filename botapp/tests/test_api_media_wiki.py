@@ -1,7 +1,6 @@
 """tests Media Wiki's API response"""
 
 
-import urllib
 import unittest
 import re
 
@@ -14,7 +13,7 @@ class TestMediaWikiAPI(unittest.TestCase):
     def setUp(self):
         self.keyword = "tour Eiffel"
         self.media_wiki_object = MediaWikiObject(self.keyword)
-        self.link_regex = "https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+"
+        self.link_regex = r"https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+"
 
     def test_search(self):
         """tests media wiki search and asserts results"""

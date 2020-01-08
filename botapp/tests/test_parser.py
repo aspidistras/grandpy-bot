@@ -11,7 +11,7 @@ class TestParser(unittest.TestCase):
     def setUp(self):
         self.sentence = "Est-ce que tu connais l'adresse de la tour Eiffel ?"
         self.parser = Parser(self.sentence)
-        
+
     def test_parser(self):
         """tests parsing a sentence ans asserts results"""
 

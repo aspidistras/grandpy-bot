@@ -25,16 +25,17 @@ class GoogleMapsObject:
         if self.status == "OK":  # if the request was valid
             return True
 
-        else:
-            return None
+        return False
 
     def search_address(self):
         """goes through the result to put into a dictionary the address and location's geometry
         details and returns data"""
-        
+
         if self.status:
             data = self.result["results"]
             self.data["address"] = data[0]["formatted_address"]
             self.data["longitude"] = data[0]["geometry"]["location"]["lng"]
             self.data["latitude"] = data[0]["geometry"]["location"]["lat"]
             return self.data
+
+        return None

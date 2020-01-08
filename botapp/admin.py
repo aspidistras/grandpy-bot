@@ -1,7 +1,11 @@
-from flask import url_for, redirect, render_template, request
+"""defines the customized AdminIndexView with its methods for index access, login and logout"""
+
+
+from flask import url_for, redirect, request
 import flask_admin as admin
 import flask_login as login
 from flask_admin import helpers, expose
+
 from botapp.models.user import LoginForm
 
 

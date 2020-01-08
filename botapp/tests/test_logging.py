@@ -1,13 +1,7 @@
 """tests logging is made when requests to one or both API fail"""
 
 
-import urllib
 import unittest
-import re
-import os
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 
 from botapp.grandpy_bot import GrandPyBot
 from botapp.app import create_test_app
@@ -30,6 +24,10 @@ class TestLogging(unittest.TestCase):
         self.database_count = 0
 
     def database_connection(self):
+        """
+        Tests database access
+        """
+
         try:
             self.database_count = Logging.query.count()
             return True
@@ -37,6 +35,10 @@ class TestLogging(unittest.TestCase):
             return False
 
     def test_database_entry(self):
+        """
+        Tests if Logging instances are created when requests fail
+        """
+
         if self.database_connection():
             self.bot.return_data()
             new_count = Logging.query.count()

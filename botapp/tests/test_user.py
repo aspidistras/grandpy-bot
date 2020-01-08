@@ -1,24 +1,16 @@
 """tests user can log in and out and has access to admin pages only if role is admin"""
 
 
-import urllib
 import unittest
-import re
-import os
-import requests
-from flask import Flask, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from flask import url_for
 import flask_login
 from flask_login import current_user
 from flask_admin import Admin
 
-from botapp.grandpy_bot import GrandPyBot
 from botapp.app import create_test_app
 from botapp.models.user import User, db
 from botapp.models.logging import Logging, LoggingView
-from botapp.models.admin import AdminIndexView
-
+from botapp.admin import AdminIndexView
 
 
 class TestUser(unittest.TestCase):
@@ -39,12 +31,17 @@ class TestUser(unittest.TestCase):
         self.user = User("test@test.fr", "test", True, "admin")
         self.db.session.add(self.user)
         self.db.session.commit()
-        self.admin = Admin(self.app, name='GrandPy Bot', index_view=AdminIndexView(), template_mode='bootstrap3', base_template='custom-admin.html')
+        self.admin = Admin(self.app, name='GrandPy Bot', index_view=AdminIndexView(),
+                           template_mode='bootstrap3', base_template='custom-admin.html')
         self.admin.add_view(LoggingView(Logging, db.session))
         flask_login.login_user(self.user)
 
 
     def database_connection(self):
+        """
+        Tests database access
+        """
+
         try:
             User.query.count()
             return True
@@ -53,19 +50,31 @@ class TestUser(unittest.TestCase):
 
 
     def test_user_login(self):
+        """
+        Tests user is logged in
+        """
+
         if self.database_connection():
             with self.client:
                 assert current_user.email == "test@test.fr"
-    
+
 
     def test_user_logout(self):
+        """
+        Tests user is logged out
+        """
+
         if self.database_connection():
             with self.client:
                 flask_login.logout_user()
-                assert current_user.is_anonymous == True
+                assert current_user.is_anonymous is True
 
 
     def test_access_to_admin(self):
+        """
+        Tests logged in user has access to logging view
+        """
+
         with self.client:
             with self.client.session_transaction() as session:
                 session['user_id'] = current_user.id
@@ -73,8 +82,13 @@ class TestUser(unittest.TestCase):
             response = self.client.get(url_for('admin.index'), follow_redirects=True)
             assert b'Here you can browse failed requests logs' in response.data
 
-                    
+
     def test_access_denied_to_admin(self):
+        """
+        Tests anonymous user (not logged in) or non admin user is denied access to logging view
+        and redirected to login view
+        """
+
         with self.client:
             flask_login.logout_user()
             response = self.client.get(url_for('admin.index'), follow_redirects=True)

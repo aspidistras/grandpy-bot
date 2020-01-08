@@ -1,13 +1,18 @@
+"""app creating file in production or test mode"""
+
+
 import os
 from flask import Flask
 from flask_migrate import Migrate
-
-from botapp.models.logging import Logging, LoggingView, db
-
 import flask_login as login
+
+from botapp.models.logging import db
 from botapp.models.user import User
 
+
 def create_production_app():
+    """creates app for production, migrates db and inits login manager"""
+
     app = Flask(__name__)
     app.config.from_object('config')
 
@@ -27,6 +32,8 @@ def create_production_app():
 
 
 def create_test_app():
+    """creates app for testing, sets config, migrates db and inits login manager"""
+
     app = Flask(__name__)
     app.config['TESTING'] = True
     basedir = os.path.abspath(os.path.dirname(__file__))
@@ -49,5 +56,7 @@ def create_test_app():
 
 
 def init_db():
+    """cleans and creates models in db"""
+
     db.drop_all()
     db.create_all()

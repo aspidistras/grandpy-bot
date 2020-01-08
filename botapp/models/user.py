@@ -1,7 +1,10 @@
+"""defines User model and Login Form"""
+
+
+from wtforms import form, fields, validators
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import UserMixin
-from wtforms import form, fields, validators
-from werkzeug.security import generate_password_hash, check_password_hash
+
 
 db = SQLAlchemy()
 
@@ -23,12 +26,13 @@ class User(db.Model, UserMixin):
 
 
 class LoginForm(form.Form):
-    """initializes LoginForm object with its attributes and methods to permit login and raise errors if login data doesn't match db data"""
+    """initializes LoginForm object with its attributes and methods
+    to permit login and raise errors if login data doesn't match db data"""
 
     email = fields.StringField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.required()])
 
-    def validate_login(self, field):
+    def validate_login(self):
         """get user or return errors if user doesn't exist or pasword is wrong"""
 
         user = self.get_user()
@@ -41,5 +45,5 @@ class LoginForm(form.Form):
 
     def get_user(self):
         """query user from database matching entered infos"""
-        
+
         return db.session.query(User).filter_by(email=self.email.data).first()
